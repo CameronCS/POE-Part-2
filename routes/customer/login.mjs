@@ -30,7 +30,7 @@ router.post('/', bruteForce.prevent, async (req, res) => {
     if (!passwordMatch) {
         return res.status(401).json({ message: "Authentication failed!" });
     } else {
-        const token = jwt.sign({ username }, process.env.JWT_SECRET, { expiresIn: "1h" });
+        const token = jwt.sign({ username }, process.env.JWT_TOKEN_LEN, { expiresIn: "1h" });
         return res.status(200).json({ message: "Authentication Successful", token, username });
     }
 });
